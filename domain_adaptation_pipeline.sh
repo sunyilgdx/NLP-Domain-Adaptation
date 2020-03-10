@@ -11,7 +11,7 @@ WARMUP_STEPS=0
 FP16=""
 
 SAVE_STEPS=2500
-SAVE_TOTAL_LIMIT=50
+SAVE_TOTAL_LIMIT=120
 
 OVERWRITE_CACHE=""
 OVERWRITE_OUTPUT_DIR=""
@@ -260,7 +260,7 @@ else
     echo "********************************************************"
     echo "Performing domain pre-training on BERT with $CORPUS"
     echo "********************************************************"
-    python -m scripts.domain_adaptation.domain_pre_train \
+    python -m torch.distributed.launch --nproc_per_node 8 ./scripts/domain_adaptation/domain_pre_train.py \
         --output_dir $DOMAIN_PRE_TRAIN_FOLDER \
         --model_type "bert" \
         --tokenizer_vocab $TOKENIZER_VOCAB \

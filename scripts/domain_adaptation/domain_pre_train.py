@@ -39,9 +39,13 @@ from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
 
 from tokenizers import BertWordPieceTokenizer, Tokenizer
-from src.tokenizer import truncate
-from src.utils.iter import batch as batch_iters
-from src.utils.multiproc import parallelize
+
+import sys
+sys.path.append('~/SageMaker/NLP-Domain-Adaptation')
+
+truncate = lambda x: x
+batch_iters = lambda x: x
+parallelize = lambda x: x
 
 from transformers import (
     WEIGHTS_NAME,
@@ -589,7 +593,7 @@ def main():
     )
     parser.add_argument(
         "--data_loader_num_workers",
-        default=2,
+        default=32,
         type=int,
         help="Number of workers to handle preprocessing of data.",
     )
