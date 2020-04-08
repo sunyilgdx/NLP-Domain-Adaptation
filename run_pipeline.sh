@@ -1,7 +1,7 @@
 #!/bin/zsh
 FINE_TUNE_DATASET="linnaeus"
 PCT=2
-MOD="similar"
+MOD="dissimilar"
 CORPUS="data/biology/corpus/subsets/pubmed_corpus_${MOD}_jensen-shannon_linnaeus_train_0.02pct.txt"
 FINE_TUNE_TEXT="data/biology/corpus/${FINE_TUNE_DATASET}_train.txt"
 EVAL_CORPUS="data/biology/corpus/${FINE_TUNE_DATASET}_dev.txt"
